@@ -95,7 +95,7 @@ class BaseDataSets1(Dataset):
         return 32
 
     def __getitem__(self, idx):
-        img=cv2.imread('D:/123work/shujuchuli/123/{}.png'.format(idx))
+        img=cv2.imread('D:/123work/work/shujuchuli/123/{}.png'.format(idx))
 
         image = img[:,:1024,0]
         label = img[:,1024:,0]

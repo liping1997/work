@@ -114,7 +114,7 @@ def train(args, snapshot_path):
     db_train = BaseDataSets1(base_dir=args.root_path, split="train", num=None, transform=transforms.Compose([
         RandomGenerator(args.patch_size)
     ]))
-    db_val = BaseDataSets(base_dir=args.root_path, split="val")
+    # db_val = BaseDataSets(base_dir=args.root_path, split="val")
 
     total_slices = len(db_train)
     # labeled_slice = patients_to_slices(args.root_path, args.labeled_num)
@@ -131,8 +131,8 @@ def train(args, snapshot_path):
 
     model.train()
 
-    valloader = DataLoader(db_val, batch_size=1, shuffle=False,
-                           num_workers=1)
+    # valloader = DataLoader(db_val, batch_size=1, shuffle=False,
+    #                        num_workers=1)
 
     optimizer = optim.SGD(model.parameters(), lr=base_lr,
                           momentum=0.9, weight_decay=0.0001)
