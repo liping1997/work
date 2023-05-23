@@ -193,7 +193,7 @@ def train(args, snapshot_path):
 
 
 
-            if iter_num % 20 == 0:
+            if iter_num % 200 == 0:
                 image = volume_batch[1, 0:1, :, :]
                 writer.add_image('train/Image', image, iter_num)
                 outputs = torch.argmax(torch.softmax(
