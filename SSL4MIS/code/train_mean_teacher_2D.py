@@ -45,7 +45,7 @@ parser.add_argument('--base_lr', type=float,  default=0.01,
 parser.add_argument('--patch_size', type=list,  default=[256, 256],
                     help='patch size of network input')
 parser.add_argument('--seed', type=int,  default=1337, help='random seed')
-parser.add_argument('--num_classes', type=int,  default=2,
+parser.add_argument('--num_classes', type=int,  default=4,
                     help='output channel of network')
 
 # label and unlabel
@@ -117,8 +117,9 @@ def train(args, snapshot_path):
     # db_val = BaseDataSets(base_dir=args.root_path, split="val")
 
     total_slices = len(db_train)
+    print(total_slices)
     # labeled_slice = patients_to_slices(args.root_path, args.labeled_num)
-    labeled_slice=37
+    labeled_slice=47
     print("Total silices is: {}, labeled slices is: {}".format(
         total_slices, labeled_slice))
     labeled_idxs = list(range(0, labeled_slice))

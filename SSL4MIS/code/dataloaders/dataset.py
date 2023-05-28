@@ -16,7 +16,16 @@ from augmentations.ctaugment import OPS
 import matplotlib.pyplot as plt
 from PIL import Image
 
+def yanse_num(img):
+    # 将图像转换为一维数组，每个元素表示一个像素的BGR通道值（0-255）
+    pixels = img.reshape(-1, 3)
 
+    # 查找唯一的颜色并计算数量
+    unique_colors, counts = np.unique(pixels, axis=0, return_counts=True)
+    num_colors = len(unique_colors)
+
+    # 输出结果
+    print(f"The image has approximately {num_colors} colors.")
 class BaseDataSets(Dataset):
     def __init__(
         self,
@@ -92,13 +101,14 @@ class BaseDataSets1(Dataset):
         print("total {} samples".format(len(self.sample_list)))
 
     def __len__(self):
-        return 160
+        return 238
 
     def __getitem__(self, idx):
         img=cv2.imread('../../shujuchuli/123/{}.png'.format(idx))
 
-        image = img[:,:1024,0]
-        label = img[:,1024:,0]
+        image = img[:,:768,0]
+        label = img[:,768:,0]
+
         image = torch.from_numpy(image.astype(np.float32)/255.0).unsqueeze(0)
         label = torch.from_numpy(label.astype(np.uint8))
         sample = {"image": image, "label": label}
