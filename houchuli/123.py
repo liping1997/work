@@ -117,14 +117,15 @@ def edge(path):
                 edge_img[i][j] = 255
 
     # 保存边界图片
-    out_path = os.path.splitext(path)[0] + '_edge.jpg'
-    out_path = os.path.join('./edge',out_path)
+    aaa=path.replace('.png','_edge.png')
+    out_path = os.path.join('./edge',aaa)
 
     cv2.imwrite(out_path, edge_img)
-
+import os
 # 测试
-img_path = "0.png"
-edge(img_path)
+# for i in os.listdir('./label'):
+#     print(i)
+#     edge(i)
 
 
 import cv2
@@ -148,13 +149,50 @@ def edge1(img_path,edge_path):
     result = cv2.addWeighted(edge_bgr, alpha, img, 1 - alpha, 0)
 
     # 显示并保存结果图像
-    cv2.imshow("Result", result)
-    cv2.waitKey(0)
-    out_path = os.path.splitext(img_path)[0] + '_result.jpg'
+
+    out_path=path1.replace('yuantu','result')
     cv2.imwrite(out_path, result)
+#
+#
+# # 测试
+# # img_path = "./yuantu/0.png"
+# # edge_path='./edge/0_edge.jpg'
+# # edge1(img_path,edge_path)
+#
+# for i in os.listdir('./yuantu'):
+#     path1=os.path.join('./yuantu',i)
+#     path2=os.path.join('./edge',i.replace('.png','_edge.png'))
+#     edge1(path1,path2)
 
 
-# 测试
-img_path = "./yuantu/0.png"
-edge_path='./edge/0_edge.jpg'
-edge1(img_path,edge_path)
+from PIL import Image
+for i in os.listdir('./label'):
+    path1=os.path.join('./yuantu',i)
+    path2=os.path.join('./label',i)
+    path3=os.path.join('./edge',i.replace('.png','_edge.png'))
+    path4=os.path.join('./result',i)
+
+    import cv2
+
+    # 读取四张图片
+    img_a = cv2.imread(path1)
+    img_b = cv2.imread(path2)
+    img_c = cv2.imread(path3)
+    img_d = cv2.imread(path4)
+
+    # 获取单张图片的高度和宽度
+    height, width, _ = img_a.shape
+
+    # 将 A、B 图片水平方向拼接
+    merge_ab = cv2.hconcat([img_a, img_b])
+
+    # 将 C、D 图片水平方向拼接
+    merge_cd = cv2.hconcat([img_c, img_d])
+
+    # 将合并后的 AB 和 CD 图片垂直方向拼接
+    merge_final = cv2.vconcat([merge_ab, merge_cd])
+
+
+
+    # 保存最终拼接结果
+    cv2.imwrite('./results/{}'.format(i),merge_final)

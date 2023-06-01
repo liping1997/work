@@ -203,18 +203,18 @@ def update_config(config, args):
         config.DATA.CACHE_MODE = args.cache_mode
     if args.resume:
         config.MODEL.RESUME = args.resume
-    if args.accumulation_steps:
-        config.TRAIN.ACCUMULATION_STEPS = args.accumulation_steps
-    if args.use_checkpoint:
-        config.TRAIN.USE_CHECKPOINT = True
-    if args.amp_opt_level:
-        config.AMP_OPT_LEVEL = args.amp_opt_level
-    if args.tag:
-        config.TAG = args.tag
-    if args.eval:
-        config.EVAL_MODE = True
-    if args.throughput:
-        config.THROUGHPUT_MODE = True
+    # if args.accumulation_steps:
+    #     config.TRAIN.ACCUMULATION_STEPS = args.accumulation_steps
+    # if args.use_checkpoint:
+    #     config.TRAIN.USE_CHECKPOINT = True
+    # if args.amp_opt_level:
+    #     config.AMP_OPT_LEVEL = args.amp_opt_level
+    # if args.tag:
+    #     config.TAG = args.tag
+    # if args.eval:
+    #     config.EVAL_MODE = True
+    # if args.throughput:
+    #     config.THROUGHPUT_MODE = True
 
     config.freeze()
 

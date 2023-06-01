@@ -74,6 +74,21 @@ def yanse_num(img):
 #     yanse_num(img)
 #     # cv2.imwrite('./label_process/{}'.format(i),color_map)
 
+# for i in os.listdir('./label'):
+#
+#     # 加载彩色图像
+#     path=os.path.join('./label',i)
+#     img = cv2.imread(path)
+#     yanse_num(img)
+#
+#     img[img == 255] = 2
+#     img[img == 220] = 1
+#     img[img == 200] = 0
+#     img[img <20] ==0
+#     yanse_num(img)
+#     print(img.max(),img.min())
+#     cv2.imwrite('./label_a/{}'.format(i), img)
+
 
 # for i in os.listdir('./label'):
 #
@@ -90,23 +105,29 @@ def yanse_num(img):
 #     print(img.max(),img.min())
 #     cv2.imwrite('./label_process/{}'.format(i), img)
 #
-for i in os.listdir('./label_process'):
-    path=os.path.join('./label_process',i)
-    img=cv2.imread(path)
-    print(path)
-    yanse_num(img)
+# for i in os.listdir('./label_process'):
+#     path=os.path.join('./label_process',i)
+#     img=cv2.imread(path)
+#     print(path)
+#     yanse_num(img)
 
-# for i in os.listdir('./yuantu'):
-#
-#     # 加载要拼接的两张图片
-#     image1 = cv2.imread('./yuantu/{}'.format(i))
-#     image2 = cv2.imread('./label_process/{}'.format(i))
-#
-#     # 将两张图片按水平方向拼接
-#     result = cv2.hconcat([image1, image2])
-#     print(i)
-#     # 展示拼接后的结果
-#     cv2.imwrite('./123/{}'.format(i), result)
+# for i in os.listdir('./label_a'):
+#     path=os.path.join('./label_a',i)
+#     img=cv2.imread(path)
+#     print(path)
+#     yanse_num(img)
+
+for i in os.listdir('./yuantu'):
+
+    # 加载要拼接的两张图片
+    image1 = cv2.imread('./yuantu/{}'.format(i))
+    image2 = cv2.imread('./label_a/{}'.format(i))
+
+    # 将两张图片按水平方向拼接
+    result = cv2.hconcat([image1, image2])
+    print(i)
+    # 展示拼接后的结果
+    cv2.imwrite('./123/{}'.format(i), result)
 
 #
 # import os
