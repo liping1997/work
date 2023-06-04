@@ -242,7 +242,7 @@ def train(args, snapshot_path):
     for epoch_num in iterator:
         # track mean error for entire epoch
         epoch_errors = []
-        # refresh augmentation policies with each new epoch
+        # refresh augmentation policies with each newcrop epoch
         refresh_policies(db_train, cta)
 
         for i_batch, sampled_batch in enumerate(trainloader):

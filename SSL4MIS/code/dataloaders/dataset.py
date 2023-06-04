@@ -101,7 +101,7 @@ class BaseDataSets1(Dataset):
         print("total {} samples".format(len(self.sample_list)))
 
     def __len__(self):
-        return 238
+        return 885
 
     def __getitem__(self, idx):
         img=cv2.imread('../../shujuchuli/123/{}.png'.format(idx))

@@ -111,7 +111,7 @@ def restore_model(logger, snapshot_path, model_num=None):
         logger.info(f"Models restored from iteration {iter_num}")
         return model, optimizer, start_epoch, performance
     except Exception as e:
-        logger.warning(f"Unable to restore model checkpoint: {e}, using new model")
+        logger.warning(f"Unable to restore model checkpoint: {e}, using newcrop model")
 
 
 def save_checkpoint(epoch, model, optimizer, loss, path):

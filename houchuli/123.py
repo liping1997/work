@@ -79,7 +79,7 @@ def change_color():
 # from PIL import Image
 #
 # # 创建空白图像
-# image = Image.new("RGB", (256, 256))
+# image = Image.newcrop("RGB", (256, 256))
 #
 # # 遍历每个 16x16 区域，并在该区域填充对应颜色
 # for x in range(0, 256, 16):
@@ -95,7 +95,7 @@ def edge(path):
     import cv2
     import os
 
-    img_path=os.path.join('./label',path)
+    img_path=os.path.join('./label_a',path)
     # 读取语义分割图像
     img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
 
@@ -121,9 +121,9 @@ def edge(path):
     out_path = os.path.join('./edge',aaa)
 
     cv2.imwrite(out_path, edge_img)
-import os
-# 测试
-# for i in os.listdir('./label'):
+# import os
+#
+# for i in os.listdir('./label_a'):
 #     print(i)
 #     edge(i)
 
@@ -150,10 +150,9 @@ def edge1(img_path,edge_path):
 
     # 显示并保存结果图像
 
-    out_path=path1.replace('yuantu','result')
+    out_path=img_path.replace('yuantu','result')
     cv2.imwrite(out_path, result)
-#
-#
+
 # # 测试
 # # img_path = "./yuantu/0.png"
 # # edge_path='./edge/0_edge.jpg'
@@ -168,7 +167,7 @@ def edge1(img_path,edge_path):
 from PIL import Image
 for i in os.listdir('./label'):
     path1=os.path.join('./yuantu',i)
-    path2=os.path.join('./label',i)
+    path2=os.path.join('./label_a',i)
     path3=os.path.join('./edge',i.replace('.png','_edge.png'))
     path4=os.path.join('./result',i)
 
