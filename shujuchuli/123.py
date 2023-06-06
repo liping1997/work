@@ -73,7 +73,7 @@ def yanse_num(img):
 #
 #     yanse_num(img)
 #     # cv2.imwrite('./label_process/{}'.format(i),color_map)
-
+#
 # for i in os.listdir('./label'):
 #
 #     # 加载彩色图像
@@ -255,7 +255,7 @@ class ImageCropper(QMainWindow):
                 # if save_path != "":
                 #     cropped_image.save(save_path)
 
-                save_path=os.path.join(self.files[self.current_file_index].replace('D1','newcrop1'))
+                save_path=os.path.join(self.files[self.current_file_index].replace('C1','newcrop2'))
                 print(self.files[self.current_file_index],save_path)
                 cropped_image.save(save_path)
             # 重置状态
@@ -374,3 +374,12 @@ def denoise_oct_image(img):
 #     cv2.imshow('Denoised', img_denoised)
 #     cv2.waitKey(0)
 #     cv2.destroyAllWindows()
+# n=430
+for i in os.listdir('./789'):
+    print(i)
+    path=os.path.join('./789',i)
+
+    img=cv2.imread(path)
+    cv2.imwrite('./123/{}'.format(i),img)
+
+

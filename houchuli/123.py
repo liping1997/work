@@ -95,7 +95,7 @@ def edge(path):
     import cv2
     import os
 
-    img_path=os.path.join('./label_a',path)
+    img_path=os.path.join('./label',path)
     # 读取语义分割图像
     img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
 
@@ -119,11 +119,10 @@ def edge(path):
     # 保存边界图片
     aaa=path.replace('.png','_edge.png')
     out_path = os.path.join('./edge',aaa)
-
     cv2.imwrite(out_path, edge_img)
-# import os
-#
-# for i in os.listdir('./label_a'):
+import os
+
+# for i in os.listdir('./label'):
 #     print(i)
 #     edge(i)
 
@@ -145,7 +144,7 @@ def edge1(img_path,edge_path):
 
     # 将边界图像拷贝到原图像中
     img[edge_img != 0] = (0, 0, 255)
-    alpha = 0.5  # 设置透明度
+    alpha = 0.1  # 设置透明度
     result = cv2.addWeighted(edge_bgr, alpha, img, 1 - alpha, 0)
 
     # 显示并保存结果图像
@@ -167,7 +166,7 @@ def edge1(img_path,edge_path):
 from PIL import Image
 for i in os.listdir('./label'):
     path1=os.path.join('./yuantu',i)
-    path2=os.path.join('./label_a',i)
+    path2=os.path.join('./label',i)
     path3=os.path.join('./edge',i.replace('.png','_edge.png'))
     path4=os.path.join('./result',i)
 

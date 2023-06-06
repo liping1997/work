@@ -35,7 +35,7 @@ parser.add_argument('--exp', type=str,
 parser.add_argument('--model', type=str,
                     default='unet', help='model_name')
 parser.add_argument('--max_iterations', type=int,
-                    default=40000, help='maximum epoch number to train')
+                    default=60000, help='maximum epoch number to train')
 parser.add_argument('--batch_size', type=int, default=2,
                     help='batch_size per gpu')
 parser.add_argument('--deterministic', type=int,  default=1,
@@ -119,7 +119,7 @@ def train(args, snapshot_path):
     total_slices = len(db_train)
     print(total_slices)
     # labeled_slice = patients_to_slices(args.root_path, args.labeled_num)
-    labeled_slice=330
+    labeled_slice=430
     print("Total silices is: {}, labeled slices is: {}".format(
         total_slices, labeled_slice))
     labeled_idxs = list(range(0, labeled_slice))
@@ -194,7 +194,7 @@ def train(args, snapshot_path):
 
 
 
-            if iter_num % 200 == 0:
+            if iter_num % 20 == 0:
                 image = volume_batch[1, 0:1, :, :]
                 writer.add_image('train/Image', image, iter_num)
                 outputs = torch.argmax(torch.softmax(
