@@ -105,7 +105,6 @@ class BaseDataSets1(Dataset):
 
     def __getitem__(self, idx):
         img=cv2.imread('../../shujuchuli/123/{}.png'.format(idx))
-
         image = img[:,:768,0]
         label = img[:,768:,0]
 
